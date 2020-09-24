@@ -1,0 +1,7 @@
+<main>
+  <div style="text-align: center; margin-top: 5%;">
+    <h1>Bienvenue <span *ngIf="authService.isAuthenticated()">{{authService.getCurrentUserName()}}</span> sur la page d'accueil</h1>
+
+    <h3>Ici tu ne trouvera rien à part du beau texte inutile</h3>
+  </div>
+</main>

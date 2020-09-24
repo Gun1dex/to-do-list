@@ -1,0 +1,34 @@
+<mat-table [dataSource]="tasks" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="nom">
+    <mat-header-cell *matHeaderCellDef> Nom de la tâche </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.nom}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="modifier">
+    <mat-header-cell *matHeaderCellDef> Modifier la tâche </mat-header-cell>
+    <mat-cell *matCellDef="let element" [routerLink]="['detail/', element.id]">
+      <button mat-icon-button>
+        <span class="material-icons"> update </span>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="supprimer">
+    <mat-header-cell *matHeaderCellDef> Supprimer la tâche </mat-header-cell>
+    <mat-cell *matCellDef="let element" (click)="deleteTask(element.id)">
+      <button mat-icon-button>
+        <span class="material-icons">delete</span>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>

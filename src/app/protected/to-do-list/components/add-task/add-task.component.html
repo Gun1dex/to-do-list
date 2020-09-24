@@ -1,0 +1,29 @@
+<div class="add-task-main-div">
+  <h2 class="add-task-title accent-color">Ajouter une tâche</h2>
+  <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+    <mat-form-field [style.width.px]=300 appearance="outline">
+      <mat-label>Nom de la tâche</mat-label>
+      <input matInput placeholder="name" formControlName="nom">
+    </mat-form-field>
+    <br>
+    <mat-form-field [style.width.px]=300 appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="description" formControlName="description">
+    </mat-form-field>
+    <br>
+    <mat-form-field [style.width.px]=300 appearance="outline">
+      <mat-label>Choisir l'utilisateur</mat-label>
+      <mat-select formControlName="userSelected">
+        <mat-option *ngFor="let user of userList" value="{{user.id}}">{{user.username}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button type="submit" mat-raised-button color="primary">Ajouter une tâche</button>
+  </form>
+</div>
+
+
+
+
+
+

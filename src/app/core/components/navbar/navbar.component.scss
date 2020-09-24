@@ -1,0 +1,22 @@
+nav {
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  right: 0;
+}
+
+nav li {
+  display: inline-block;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+nav li button {
+  font-size: 20px;
+}
+
+mat-sidenav-container{
+  height: calc( 100vh - 235px);
+}
