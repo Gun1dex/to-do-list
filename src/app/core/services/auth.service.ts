@@ -4,6 +4,9 @@ import { AngularFireAuth } from '@angular/fire/auth'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IUser } from '../models/user';
 
+export function authFactory(provider: AuthService) {
+  return () => provider.loadAuth();
+}
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +29,10 @@ export class AuthService {
     });
   }
 
+  public loadAuth() {
+
+  }
+
   createNewUser(username_param: string, email_param: string, password: string) {
     this.afAuth.createUserWithEmailAndPassword(email_param, password).then((data) => {
       console.log('iud', data.user.uid);
@@ -44,7 +51,6 @@ export class AuthService {
 
   signOutUser() {
     this.afAuth.signOut();
-    this.router.navigate(['/']);
   }
 
   isAuthenticated() {

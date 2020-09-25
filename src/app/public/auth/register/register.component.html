@@ -4,18 +4,25 @@
     <mat-form-field [style.width.px]=300 appearance="outline">
       <mat-label for="">Nom d'utilisateur</mat-label>
       <input matInput placeholder="username" formControlName="username">
+      <mat-error *ngIf="signupForm.get('username').invalid">Le nom d'utilisateur est obligatoire</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field [style.width.px]=300 appearance="outline">
       <mat-label for="">Adresse mail</mat-label>
       <input matInput placeholder="mail" formControlName="email">
+      <mat-error *ngIf="signupForm.get('email').invalid">L'adresse email est obligatoire</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field [style.width.px]=300 appearance="outline">
       <mat-label for="">Mot de passe</mat-label>
       <input matInput type="password" placeholder="password" formControlName="password">
+      <mat-error *ngIf="signupForm.get('password').invalid">Le mot de passe est obligatoire</mat-error>
     </mat-form-field>
     <br>
     <button type="submit" mat-raised-button color="primary">Créer un compte</button>
   </form>
+</div>
+
+<div class="register-main-div">
+  <p>Tu possèdes déjà un compte ? <a [routerLink]="['/auth/signin']">Connecte-toi !</a></p>
 </div>

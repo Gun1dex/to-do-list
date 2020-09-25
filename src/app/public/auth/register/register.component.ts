@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -32,7 +31,7 @@ export class RegisterComponent implements OnInit {
     const username = this.signupForm.get('username').value;
     const email = this.signupForm.get('email').value;
     const password = this.signupForm.get('password').value;
-    if(!this.signupForm.get('email').invalid && !this.signupForm.get('password').invalid) {
+    if(!this.signupForm.get('username').invalid && !this.signupForm.get('email').invalid && !this.signupForm.get('password').invalid) {
       console.log("Format email et password correct !");
       this.authService.createNewUser(username, email, password);
       this.router.navigate(['/']);

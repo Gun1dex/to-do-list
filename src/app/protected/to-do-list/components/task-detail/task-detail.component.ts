@@ -20,7 +20,7 @@ export class TaskDetailComponent implements OnInit {
   ngOnInit(): void {
     this.taskDetail = this.formBuilder.group({
       nom: ['', Validators.required],
-      description: ['', Validators.required],
+      description: [''],
     });
     const id = this.route.snapshot.params["id"];
     this.taskService.getTask(id).subscribe((data) => {

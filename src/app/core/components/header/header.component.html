@@ -13,11 +13,9 @@
     </mat-list-item>
 
     <!-- Login in / log out button -->
-    <mat-list-item *ngIf="authService.isAuthenticated()" (click)="authService.signOutUser()">
-      <button class="log-button" mat-button> Déconnexion </button>
-    </mat-list-item>
-    <mat-list-item *ngIf="!authService.isAuthenticated()">
-      <button class="log-button" mat-button [routerLink]="['/auth/signin']"> Connexion </button>
+    <mat-list-item>
+      <button *ngIf="authService.isAuthenticated()" (click)="authService.signOutUser()" class="log-button" mat-button> Déconnexion </button>
+      <button *ngIf="!authService.isAuthenticated()" class="log-button" mat-button [routerLink]="['/auth/signin']"> Connexion </button>
       <button mat-icon-button [routerLink]="['/']"><mat-icon>home</mat-icon></button>
     </mat-list-item>
   </mat-toolbar>

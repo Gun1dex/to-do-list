@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/core/models/user';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { TaskService } from 'src/app/core/services/task.service';
 import { UsersService } from 'src/app/core/services/users.service';
 
@@ -17,12 +16,12 @@ export class AddTaskComponent implements OnInit {
   userList: IUser[];
   formIsCompleted = false;
 
-  constructor(private authService: AuthService, private taskService: TaskService, private formBuilder: FormBuilder, private router: Router, private usersService: UsersService) { }
+  constructor(private taskService: TaskService, private formBuilder: FormBuilder, private router: Router, private usersService: UsersService) { }
 
   ngOnInit(): void {
     this.taskForm = this.formBuilder.group({
       nom: ['', Validators.required],
-      description: ['', Validators.required],
+      description: [''],
       userSelected: ['',Validators.required]
     });
 
@@ -30,7 +29,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   addTask() {
-    this.formIsCompleted = !this.taskForm.get('nom').invalid && !this.taskForm.get('description').invalid && !this.taskForm.get('userSelected').invalid;
+    this.formIsCompleted = !this.taskForm.get('nom').invalid && !this.taskForm.get('userSelected').invalid;
 
     if(this.formIsCompleted) {
       this.taskService.createNewTask(

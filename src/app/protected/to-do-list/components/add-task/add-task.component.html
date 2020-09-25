@@ -4,6 +4,7 @@
     <mat-form-field [style.width.px]=300 appearance="outline">
       <mat-label>Nom de la tâche</mat-label>
       <input matInput placeholder="name" formControlName="nom">
+      <mat-error *ngIf="taskForm.get('nom').invalid">Le nom de la tâche est requis</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field [style.width.px]=300 appearance="outline">
@@ -18,6 +19,7 @@
       </mat-select>
     </mat-form-field>
     <br>
+    <button [routerLink]="['/toDoList/task-list']" mat-raised-button color="primary">Annuler</button>
     <button type="submit" mat-raised-button color="primary">Ajouter une tâche</button>
   </form>
 </div>
