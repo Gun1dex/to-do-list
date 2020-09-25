@@ -44,7 +44,6 @@ export class AddTaskComponent implements OnInit {
   getAllUsers() {
     this.usersService.getUsers().subscribe((data) => {
       this.userList = data;
-      console.log(data);
     });
   }
 

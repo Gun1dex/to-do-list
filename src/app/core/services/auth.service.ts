@@ -15,22 +15,24 @@ export class AuthService {
   public user: IUser;
 
   constructor(private router: Router, private afAuth: AngularFireAuth, private db: AngularFirestore) {
-    this.afAuth.onAuthStateChanged((user) => {
-      if(user) {
-        this.db.collection("Users").doc(user.uid).get().subscribe((data) => {
-          this.user = {
-            id: user.uid, ... data.data()
-          } as IUser;
-          console.log(this.user);
-        });
-      } else {
-        this.user = null;
-      }
-    });
   }
 
   public loadAuth() {
-
+    return new Promise(async (resolve, reject) => {
+      this.afAuth.onAuthStateChanged((user) => {
+        if(user) {
+          this.db.collection("Users").doc(user.uid).get().subscribe((data) => {
+            this.user = {
+              id: user.uid, ... data.data()
+            } as IUser;
+            resolve(true);
+          });
+        } else {
+          this.user = null;
+          resolve(true);
+        }
+      });
+    });
   }
 
   createNewUser(username_param: string, email_param: string, password: string) {

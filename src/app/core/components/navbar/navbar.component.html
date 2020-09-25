@@ -2,10 +2,10 @@
   <mat-sidenav #sideNav [mode]="'side'">
     <mat-nav-list>
       <!-- User is not connected -->
-      <mat-list-item *ngIf="!authService.isAuthenticated()" [routerLink]="['/auth/signin']">
+      <mat-list-item *ngIf="!authService.isAuthenticated()" [routerLink]="['/auth/signin']" routerLinkActive="isSelected">
         <h4 mat-line>Connexion</h4>
       </mat-list-item>
-      <mat-list-item *ngIf="!authService.isAuthenticated()" [routerLink]="['/auth/signup']">
+      <mat-list-item *ngIf="!authService.isAuthenticated()" [routerLink]="['/auth/signup']" routerLinkActive="isSelected">
         <h4 mat-line>Créer un compte</h4>
       </mat-list-item>
 
@@ -13,13 +13,13 @@
       <mat-list-item *ngIf="authService.isAuthenticated()">
         <h4 mat-line>Bonjour {{authService.getCurrentUserName()}}</h4>
       </mat-list-item>
-      <mat-list-item *ngIf="authService.isAuthenticated()" [routerLink]="['/toDoList/add-task']" (click)="this.navBar.toggle()">
+      <mat-list-item *ngIf="authService.isAuthenticated()" [routerLink]="['/toDoList/add-task']" (click)="this.navBar.toggle()" routerLinkActive="isSelected">
         <h4 mat-line>Ajouter une tâche</h4>
       </mat-list-item>
-      <mat-list-item *ngIf="authService.isAuthenticated()" [routerLink]="['/toDoList/task-list']" (click)="this.navBar.toggle()">
+      <mat-list-item *ngIf="authService.isAuthenticated()" [routerLink]="['/toDoList/task-list']" (click)="this.navBar.toggle()" routerLinkActive="isSelected">
         <h4 mat-line>Liste des tâches</h4>
       </mat-list-item>
-      <mat-list-item *ngIf="authService.isAuthenticated()" (click)="authService.signOutUser()">
+      <mat-list-item *ngIf="authService.isAuthenticated()" (click)="authService.signOutUser()" routerLinkActive="isSelected">
         <h4 mat-line>Déconnexion</h4>
       </mat-list-item>
 

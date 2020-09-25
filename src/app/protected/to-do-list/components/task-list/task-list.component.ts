@@ -14,6 +14,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   tasks : ITask[];
   sub: Subscription;
+  loading = true;
 
   constructor(private taskService: TaskService) { }
 
@@ -33,8 +34,12 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   loadData() {
     this.sub = this.taskService.getTasks().subscribe((data) => {
-      this.tasks = data;
+        this.tasks = data;
+        this.loading = false;
     });
   }
 
+  hideSpinner() {
+
+  }
 }
