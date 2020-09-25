@@ -13,9 +13,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
-    BrowserAnimationsModule,
     NgbModule
   ],
   providers: [],
